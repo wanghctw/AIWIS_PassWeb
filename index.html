@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5LB7JXX2');</script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AIWIS 慧利眾－試題雲｜2026 iPAS 國家證照線上智慧刷題系統</title>
@@ -67,6 +75,10 @@
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LB7JXX2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!-- ===============================
        全站參數設定區（方便後續置換網址）
@@ -903,6 +915,15 @@
     function handleCheckout(planKey, planName, price) {
       const url = SITE_CONFIG.paymentLinks[planKey] || "#";
       currentTargetUrl = url;
+
+      // GTM / GA4 點擊結帳事件追蹤
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        plan_name: planName,
+        plan_price: price,
+        plan_key: planKey
+      });
 
       document.getElementById("modalPlanName").innerText = planName;
       document.getElementById("modalPlanPrice").innerText = `NT$ ${price}`;
