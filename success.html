@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>付款成功！感謝您的購買｜AIWIS 慧利眾－試題雲</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              500: '#10b981',
+              600: '#059669',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ==========================================
+       頂部簡易導航
+       ========================================== -->
+  <header class="bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md">
+          <i class="fa-solid fa-graduation-cap text-lg"></i>
+        </div>
+        <span class="font-black text-lg text-slate-900 tracking-tight">AIWIS <span class="text-brand-600">試題雲</span></span>
+      </a>
+      <a href="https://quiz.aiwisdomtech.com/" target="_blank" class="text-xs sm:text-sm font-semibold text-slate-600 hover:text-brand-600 transition-colors flex items-center gap-1.5">
+        <span>前往考題平台</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       主內容區（成功提示卡片）
+       ========================================== -->
+  <main class="flex-1 py-12 px-4 sm:px-6">
+    <div class="max-w-2xl mx-auto">
+      
+      <!-- 成功主卡片 -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden p-6 sm:p-10 text-center">
+        
+        <!-- 成功圖示動畫徽章 -->
+        <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-3xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-inner ring-8 ring-emerald-50">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-3">
+          交易已完成 Payment Success
+        </span>
+
+        <h1 class="text-2xl sm:text-3xl font-black text-slate-900 mb-3">
+          感謝您的購買！訂單已成立
+        </h1>
+        
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-lg mx-auto">
+          我們已收到您的付款資訊。管理員正依據您結帳時留下的備註，為您在後台建立帳號並開通天數權限！
+        </p>
+
+        <!-- 開通三部曲進度條 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 my-8 text-left space-y-4">
+          <h2 class="text-xs font-bold tracking-wider text-slate-500 uppercase flex items-center gap-1.5">
+            <i class="fa-solid fa-list-check text-brand-600"></i>
+            後續帳號開通流程
+          </h2>
+
+          <div class="space-y-4">
+            <!-- Step 1 -->
+            <div class="flex items-start gap-3.5">
+              <div class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 text-sm">1. 款項核對完成</p>
+                <p class="text-xs text-slate-500">綠界金流系統已成功確認您的訂單。</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex items-start gap-3.5">
+              <div class="w-7 h-7 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 animate-pulse">
+                2
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 text-sm">2. 管理員建立專屬帳號與開通考科</p>
+                <p class="text-xs text-slate-500">
+                  依您備註之 Email、科目（AI / 淨零碳 / 資安）與級別進行後台設定。通常於 <strong>30 分鐘至數小時內</strong> 快速開通。
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex items-start gap-3.5">
+              <div class="w-7 h-7 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                3
+              </div>
+              <div>
+                <p class="font-bold text-slate-900 text-sm">3. 查收開通信件，立即登入刷題</p>
+                <p class="text-xs text-slate-500">
+                  開通完成後，系統會將「【AIWIS試題雲】帳號開通通知信」（內含您的登入帳號、密碼與平台連結）發送至您的 Email。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 漏填備註專用補救區 -->
+        <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-5 text-left mb-8">
+          <div class="flex items-center gap-2 text-amber-800 font-bold text-sm mb-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+            <span>結帳時不小心漏填 Email 或科目？</span>
+          </div>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            別擔心！請直接點擊下方按鈕寄信給客服，提供您的<strong>付款時間、金額或綠界訂單編號</strong>，我們將立即為您手動補登開通。
+          </p>
+          <a href="mailto:wang888.tw@gmail.com?subject=【AIWIS試題雲】付款完成補登帳號&body=您好，我剛才已完成付款，欲申請開通試題雲權限：%0D%0A%0D%0A1. 平台登入帳號(常用Email)：%0D%0A2. 購買科目(AI/淨零碳/資安)：%0D%0A3. 報考級別(初級/中級)：%0D%0A4. 購買方案天數：%0D%0A5. 綠界訂單編號或交易時間：%0D%0A%0D%0A謝謝！" 
+             class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-200 hover:bg-amber-300 px-3.5 py-2 rounded-xl transition-colors">
+            <i class="fa-regular fa-envelope"></i>
+            <span>點此寄信聯繫客服補登 (wang888.tw@gmail.com)</span>
+          </a>
+        </div>
+
+        <!-- 操作按鈕 -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="https://quiz.aiwisdomtech.com/" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/25 transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <span>前往試題雲平台登入</span>
+          </a>
+          <a href="index.html" class="w-full sm:w-auto px-6 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm rounded-xl transition-all">
+            返回官網首頁
+          </a>
+        </div>
+
+        <!-- 貼心提示 -->
+        <p class="text-[11px] text-slate-400 mt-6 leading-relaxed">
+          * 提醒您：若長時間未在收件匣看到開通信件，請記得檢查一下「垃圾郵件匣」或「促銷分頁」，避免被郵件系統誤判。
+        </p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       簡易頁尾
+       ========================================== -->
+  <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-5xl mx-auto px-4">
+      <p>© 2026 AIWIS 慧利眾 試題雲. All Rights Reserved. 客服信箱：wang888.tw@gmail.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>

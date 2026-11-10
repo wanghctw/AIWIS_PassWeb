@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIWIS 慧利眾－試題雲｜2026 iPAS 國家證照線上智慧刷題系統</title>
+  <meta name="description" content="專為 iPAS 考生打造的線上刷題雲端題庫。收錄 AI 應用規劃師、淨零碳規劃管理師、資訊安全工程師歷屆考古題與全真模擬題，獨創連對 3 次錯題消滅機制，一次考取國家級專業證照！">
+  <meta name="keywords" content="iPAS, AI應用規劃師, 淨零碳規劃管理師, 資訊安全工程師, 證照考古題, 刷題系統, 題庫, 模擬考, 慧利眾, AIWIS">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="AIWIS 慧利眾－試題雲｜iPAS 國家證照線上刷題系統">
+  <meta property="og:description" content="別再死背 PDF 考古題！即時詳解、全真模擬考、個人智慧錯題本，手機通勤隨時刷，高分通關！">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/feature-highlights.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            accent: {
+              500: '#10b981',
+              600: '#059669',
+            },
+            amber: {
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .gradient-hero {
+      background: radial-gradient(120% 120% at 50% 10%, #1e3a8a 0%, #0f172a 100%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .badge-glow {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ===============================
+       全站參數設定區（方便後續置換網址）
+       =============================== -->
+  <script>
+    const SITE_CONFIG = {
+      // 試題平台登入入口網址
+      platformLoginUrl: "https://quiz.aiwisdomtech.com/",
+      // 蝦皮賣場網址（提供習慣超商取貨或蝦皮結帳的顧客）
+      shopeeShopUrl: "https://shopee.tw/product/6752776/47171302790/",
+      // 客服信箱
+      contactEmail: "wang888.tw@gmail.com",
+
+      // 各方案的第三方金流收款連結（綠界快客力 / 藍新收銀台）
+      paymentLinks: {
+        trial_3d: "https://payment.ecpay.com.tw/QuickPay/xxxx-3days",      // 3天體驗包 $49
+        sprint_30d: "https://payment.ecpay.com.tw/QuickPay/xxxx-30days",    // 30天衝刺包 $299
+        standard_90d: "https://payment.ecpay.com.tw/QuickPay/xxxx-90days",  // 90天標準包 $399
+        peace_180d: "https://payment.ecpay.com.tw/QuickPay/xxxx-180days"    // 180天安心包 $499
+      }
+    };
+  </script>
+
+  <!-- ==========================================
+       頂部跑馬燈公告（加強緊迫感與安心感）
+       ========================================== -->
+  <div class="bg-gradient-to-r from-brand-700 via-brand-600 to-indigo-700 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-sm">
+    <div class="container mx-auto flex items-center justify-center gap-2">
+      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-400 text-slate-900 animate-pulse">2026 最新版</span>
+      <span>全面收錄最新 iPAS 認證考綱、官方歷屆考古題及專業勘誤詳解！</span>
+      <a href="#pricing" class="underline hover:text-amber-300 font-bold ml-1 hidden sm:inline">立即查看方案 ➔</a>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       導航列 (Navbar)
+       ========================================== -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-graduation-cap text-xl"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-black text-xl tracking-tight text-slate-900">AIWIS <span class="text-brand-600 font-bold">試題雲</span></span>
+            </div>
+            <p class="text-[10px] text-slate-500 font-medium tracking-wide">慧利眾｜iPAS 國家證照智能備考系統</p>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+          <a href="#courses" class="hover:text-brand-600 transition-colors">熱門考科</a>
+          <a href="#features" class="hover:text-brand-600 transition-colors">核心引擎</a>
+          <a href="#pricing" class="hover:text-brand-600 transition-colors">方案定價</a>
+          <a href="#activation-flow" class="hover:text-brand-600 transition-colors">開通流程</a>
+          <a href="#faq" class="hover:text-brand-600 transition-colors">常見問題</a>
+        </div>
+
+        <!-- Right Buttons -->
+        <div class="hidden sm:flex items-center gap-3">
+          <a id="navLoginBtn" href="#" target="_blank" class="px-4 py-2 text-sm font-semibold text-slate-700 hover:text-brand-600 hover:bg-slate-100 rounded-lg transition-all border border-slate-200">
+            <i class="fa-regular fa-user mr-1.5"></i>登入試題平台
+          </a>
+          <a href="#pricing" class="px-5 py-2.5 text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg shadow-brand-600/30 hover:shadow-brand-600/40 hover:-translate-y-0.5 transition-all">
+            <i class="fa-solid fa-bolt mr-1.5 text-amber-300"></i>立即選購方案
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex md:hidden">
+          <button id="mobileMenuBtn" type="button" class="text-slate-600 hover:text-slate-900 p-2 rounded-lg" aria-label="切換選單">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
+      <a href="#courses" class="mobile-nav-link block py-2 font-medium text-slate-700 hover:text-brand-600">熱門考科</a>
+      <a href="#features" class="mobile-nav-link block py-2 font-medium text-slate-700 hover:text-brand-600">核心引擎</a>
+      <a href="#pricing" class="mobile-nav-link block py-2 font-medium text-slate-700 hover:text-brand-600">方案定價</a>
+      <a href="#activation-flow" class="mobile-nav-link block py-2 font-medium text-slate-700 hover:text-brand-600">開通流程</a>
+      <a href="#faq" class="mobile-nav-link block py-2 font-medium text-slate-700 hover:text-brand-600">常見問題</a>
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <a id="mobileNavLoginBtn" href="#" target="_blank" class="w-full text-center py-2.5 text-sm font-semibold text-slate-700 bg-slate-100 rounded-lg">
+          登入試題平台
+        </a>
+        <a href="#pricing" class="mobile-nav-link w-full text-center py-2.5 text-sm font-bold text-white bg-brand-600 rounded-lg shadow-md shadow-brand-600/20">
+          立即選購開通
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       Hero Section（首頁主視覺）
+       ========================================== -->
+  <section class="relative gradient-hero text-white pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+    <!-- 背景裝飾光暈 -->
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 -right-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium text-amber-300">
+            <i class="fa-solid fa-trophy"></i>
+            <span>iPAS 經濟部產業人才能力鑑定專用刷題系統</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-black tracking-tight leading-tight sm:leading-snug">
+            別再盯著死板 PDF 背答案！<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-cyan-200 to-blue-200">
+              全真模擬 × 即時解析 × 錯題消滅
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            針對 <strong>AI 應用規劃師、淨零碳規劃管理師、資訊安全工程師</strong> 量身打造。手機通勤、零碎時間隨時刷題，獨創「連續答對 3 次才移除」智慧錯題本，助你一次考取證照！
+          </p>
+
+          <!-- 亮點標籤 -->
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 text-xs sm:text-sm text-slate-300">
+            <div class="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+              <i class="fa-solid fa-check-circle text-accent-500"></i>
+              <span>最新官方考綱收錄</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+              <i class="fa-solid fa-check-circle text-accent-500"></i>
+              <span>跨裝置免安裝即開即練</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg">
+              <i class="fa-solid fa-check-circle text-accent-500"></i>
+              <span>全真考場倒數模擬考</span>
+            </div>
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+            <a href="#pricing" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-base rounded-xl shadow-xl shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all text-center">
+              <i class="fa-solid fa-cart-shopping mr-2"></i>挑選方案．立即開通
+            </a>
+            <a id="heroShopeeBtn" href="#" target="_blank" class="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-base rounded-xl border border-white/20 hover:border-white/40 transition-all text-center flex items-center justify-center gap-2">
+              <i class="fa-solid fa-store text-amber-300"></i>蝦皮賣場（支援超取）
+            </a>
+          </div>
+
+          <!-- 模式 C 貼心備註 -->
+          <p class="text-xs text-slate-400 flex items-center justify-center lg:justify-start gap-1.5 pt-1">
+            <i class="fa-solid fa-shield-halved text-brand-400"></i>
+            <span>線上付款時請於備註欄留下【常用信箱】，管理員迅速為您建立帳號並開通權限！</span>
+          </p>
+        </div>
+
+        <!-- Right Hero Image / Preview Mockup -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            <!-- 裝飾外框 -->
+            <div class="relative rounded-2xl bg-gradient-to-b from-white/20 to-white/5 p-2 backdrop-blur-xl border border-white/20 shadow-2xl">
+              <img src="assets/images/feature-highlights.png" alt="AIWIS 試題雲四大核心引擎" class="rounded-xl w-full h-auto object-cover shadow-inner" onerror="this.src='https://placehold.co/600x600/1e293b/ffffff?text=AIWIS+試題雲系統畫面'">
+            </div>
+            <!-- 懸浮數據卡片 -->
+            <div class="absolute -bottom-6 -left-6 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 rounded-xl p-3.5 shadow-xl hidden sm:flex items-center gap-3 text-white">
+              <div class="w-10 h-10 rounded-lg bg-accent-500/20 text-accent-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-fire"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400 font-medium">考生熱銷首選</p>
+                <p class="text-sm font-bold text-white">90 天標準備考方案</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       痛點對比 (Why Choose AIWIS?)
+       ========================================== -->
+  <section class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">痛點解決</h2>
+        <p class="text-2xl sm:text-3xl font-black text-slate-900">為什麼考生紛紛捨棄 PDF，改用 AIWIS 試題雲？</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        
+        <!-- 傳統 PDF 痛點 -->
+        <div class="bg-red-50/60 border border-red-200 rounded-2xl p-6 sm:p-8 space-y-4">
+          <div class="flex items-center gap-3 text-red-600 font-bold text-lg">
+            <i class="fa-solid fa-circle-xmark text-xl"></i>
+            <h3>傳統看 PDF 刷題的痛苦</h3>
+          </div>
+          <ul class="space-y-3 text-slate-700 text-sm">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-xmark text-red-500 mt-1"></i>
+              <span>手機螢幕字體極小，需要不斷放大縮小，通勤完全無法專心作答。</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-xmark text-red-500 mt-1"></i>
+              <span>看題目時容易不小心瞄到旁邊的答案，失去實質測驗效果。</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-xmark text-red-500 mt-1"></i>
+              <span>只有答案代號（A/B/C/D），沒有關鍵法規與計算詳解，寫錯了還是不懂。</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-xmark text-red-500 mt-1"></i>
+              <span>錯題無法自動統計，考前只能整份重翻，浪費大量時間。</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- AIWIS 試題雲優勢 -->
+        <div class="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 sm:p-8 space-y-4 shadow-sm">
+          <div class="flex items-center gap-3 text-emerald-700 font-bold text-lg">
+            <i class="fa-solid fa-circle-check text-xl"></i>
+            <h3>AIWIS 試題雲的智能體驗</h3>
+          </div>
+          <ul class="space-y-3 text-slate-700 text-sm">
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+              <span><strong>RWD 響應式介面</strong>：手機、平板、電腦字體大小剛好，隨點即答！</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+              <span><strong>題目洗牌機制</strong>：隨機打亂題目與選項順序，杜絕死記選項位置。</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+              <span><strong>即時詳解＋考點標籤</strong>：送出立即展示法規與解題思路，寫一題懂一題。</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+              <span><strong>獨創連續答對 3 次消滅</strong>：系統鎖定弱點重複練習，考前專注補強！</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       四大核心過關引擎 (Core Features)
+       ========================================== -->
+  <section id="features" class="py-20 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">系統特色</h2>
+        <p class="text-3xl font-black text-slate-900">四大核心過關引擎，讓備考事半功倍</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3">不只提供題庫，更以科學化方式助您穩固記憶曲線</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow group">
+          <div class="w-12 h-12 rounded-xl bg-blue-100 text-brand-600 flex items-center justify-center text-xl mb-4 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+            <i class="fa-solid fa-shuffle"></i>
+          </div>
+          <span class="text-xs font-bold text-brand-600 uppercase">ENGINE 01</span>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">智慧組卷與隨機出題</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            自由設定 10/20/40 題快速抽題，支援全部歷屆考古題、指定年份梯次或模擬試題，題目與選項隨機洗牌。
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <span class="text-xs font-bold text-emerald-600 uppercase">ENGINE 02</span>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">學習模式（即時詳解）</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            每題提交後立即鎖定作答，展開專業團隊編寫的詳解與知識點關聯標籤，隨時掌握核心觀念。
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow group">
+          <div class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+            <i class="fa-solid fa-stopwatch"></i>
+          </div>
+          <span class="text-xs font-bold text-indigo-600 uppercase">ENGINE 03</span>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">全真考場模擬考</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            100% 還原 iPAS 考場計時情境，時間截止自動強制交卷，立即產出成績單與各題組強弱分析。
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow group">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <span class="text-xs font-bold text-amber-600 uppercase">ENGINE 04</span>
+          <h3 class="text-lg font-bold text-slate-900 mt-1 mb-2">個人智慧錯題本</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            答錯題目自動收錄！獨創「連續答對 3 次」才消滅機制，徹底擺脫似懂非懂的模糊盲點。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       收錄考科一覽 (Courses Grid)
+       ========================================== -->
+  <section id="courses" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">認證科目</h2>
+        <p class="text-3xl font-black text-slate-900">收錄 2026 iPAS 國家級熱門考科題庫</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3">依據最新官方能力指標與評鑑指引完整命題與解析</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Course 1: AI應用規劃師 -->
+        <div class="border border-slate-200 rounded-3xl overflow-hidden hover:border-brand-500 hover:shadow-xl transition-all flex flex-col bg-slate-50/50">
+          <div class="relative overflow-hidden aspect-square bg-slate-900">
+            <img src="assets/images/course-ai.png" alt="iPAS AI應用規劃師" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x600/1e293b/ffffff?text=AI應用規劃師'">
+            <div class="absolute top-4 left-4 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+              初級 / 中級
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">iPAS AI 應用規劃師</h3>
+              <p class="text-xs text-slate-500 mb-4">掌握生成式 AI 與產業轉型最炙手可熱的國家證照</p>
+              
+              <div class="space-y-2 text-xs text-slate-700 bg-white p-4 rounded-xl border border-slate-100 mb-6">
+                <p class="font-semibold text-slate-900">收錄範疇：</p>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-brand-500"></i> 人工智慧基礎概論</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-brand-500"></i> 生成式 AI 應用與規劃</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-brand-500"></i> 機器學習與大數據分析</div>
+              </div>
+            </div>
+
+            <a href="#pricing" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl text-center transition-colors">
+              選擇此科方案 ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 2: 淨零碳規劃管理師 -->
+        <div class="border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all flex flex-col bg-slate-50/50">
+          <div class="relative overflow-hidden aspect-square bg-slate-900">
+            <img src="assets/images/course-carbon.png" alt="iPAS 淨零碳規劃管理師" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x600/064e3b/ffffff?text=淨零碳規劃管理師'">
+            <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+              綠領高薪必備
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">iPAS 淨零碳規劃管理師</h3>
+              <p class="text-xs text-slate-500 mb-4">ESG 碳盤查實務與 ISO 14064 必考法規精準解析</p>
+              
+              <div class="space-y-2 text-xs text-slate-700 bg-white p-4 rounded-xl border border-slate-100 mb-6">
+                <p class="font-semibold text-slate-900">收錄範疇：</p>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-emerald-500"></i> 淨零碳規劃管理基礎概論</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-emerald-500"></i> ISO 14064-1 組織碳盤查</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-emerald-500"></i> ISO 14067 產品碳足跡與 CBAM</div>
+              </div>
+            </div>
+
+            <a href="#pricing" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl text-center transition-colors">
+              選擇此科方案 ➔
+            </a>
+          </div>
+        </div>
+
+        <!-- Course 3: 資訊安全工程師 -->
+        <div class="border border-slate-200 rounded-3xl overflow-hidden hover:border-indigo-500 hover:shadow-xl transition-all flex flex-col bg-slate-50/50">
+          <div class="relative overflow-hidden aspect-square bg-slate-900">
+            <img src="assets/images/course-security.png" alt="iPAS 資訊安全工程師" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/600x600/312e81/ffffff?text=資訊安全工程師'">
+            <div class="absolute top-4 left-4 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+              企業剛性需求
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">iPAS 資訊安全工程師</h3>
+              <p class="text-xs text-slate-500 mb-4">資安防禦架構、網路與系統安全法規完整題庫</p>
+              
+              <div class="space-y-2 text-xs text-slate-700 bg-white p-4 rounded-xl border border-slate-100 mb-6">
+                <p class="font-semibold text-slate-900">收錄範疇：</p>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> 資訊安全概論與防護策略</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> 網路與系統安全實務操作</div>
+                <div class="flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> 資安事件應變與合規審計</div>
+              </div>
+            </div>
+
+            <a href="#pricing" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl text-center transition-colors">
+              選擇此科方案 ➔
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       方案與定價 (Pricing Table - 模式 C 核心)
+       ========================================== -->
+  <section id="pricing" class="py-20 bg-slate-100 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">彈性天數方案</h2>
+        <p class="text-3xl font-black text-slate-900">挑選適合您的備考週期</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3">全方案皆可完整使用四大核心引擎與所有官方考綱題庫</p>
+
+        <!-- 模式 C 開通提醒橫幅 -->
+        <div class="mt-6 inline-flex items-center gap-2 bg-amber-50 border border-amber-300 text-amber-900 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold shadow-sm">
+          <i class="fa-solid fa-circle-exclamation text-amber-600 text-base"></i>
+          <span>付款時請務必在【備註欄 / 買家留言】填寫您的<strong>常用信箱 (Email)</strong> 與欲開通科目，管理員將直接在後台為您建立帳號並開通！</span>
+        </div>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        
+        <!-- Plan 1: 3天體驗包 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wide">體驗試用</span>
+                <h3 class="text-xl font-bold text-slate-900">3 天體驗包</h3>
+              </div>
+              <span class="text-xs font-bold bg-slate-100 text-slate-700 px-2.5 py-1 rounded-full">零風險試水</span>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-black text-slate-900">NT$ 49</span>
+              <span class="text-xs text-slate-400 line-through ml-1">原價 $99</span>
+              <p class="text-xs text-slate-500 mt-1">銅板價體驗系統全功能無限制！</p>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-600 mb-8 border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 單一科目 3 天全功能使用權</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 完整收錄歷屆考古題與詳解</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 全真模擬考與錯題本功能</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <button onclick="handleCheckout('trial_3d', '3 天體驗包', 49)" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition-all shadow-sm">
+              線上開通 ($49)
+            </button>
+            <p class="text-[11px] text-center text-slate-400">付款備註填寫 Email 即開通</p>
+          </div>
+        </div>
+
+        <!-- Plan 2: 30天考前衝刺 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-wide">密集刷題</span>
+                <h3 class="text-xl font-bold text-slate-900">30 天衝刺方案</h3>
+              </div>
+              <span class="text-xs font-bold bg-blue-50 text-brand-700 px-2.5 py-1 rounded-full">考前一個月</span>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-black text-slate-900">NT$ 299</span>
+              <span class="text-xs text-slate-400 line-through ml-1">原價 $450</span>
+              <p class="text-xs text-slate-500 mt-1">約每日 $9.9 銅板價</p>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-600 mb-8 border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 單一科目 30 天全功能使用權</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 歷屆考題 ＋ 全真模擬試題</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 智慧錯題 3 次消滅機制</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 手機/平板/電腦跨裝置支援</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <button onclick="handleCheckout('sprint_30d', '30 天衝刺方案', 299)" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-brand-600/20">
+              線上開通 ($299)
+            </button>
+            <p class="text-[11px] text-center text-slate-400">付款備註填寫 Email 即開通</p>
+          </div>
+        </div>
+
+        <!-- Plan 3: 90天標準備考 (熱銷推薦) -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-brand-500 shadow-xl flex flex-col justify-between relative transform lg:-translate-y-2">
+          <!-- 推薦標籤 -->
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 font-black text-xs px-4 py-1 rounded-full shadow-md uppercase tracking-wider flex items-center gap-1">
+            <i class="fa-solid fa-fire"></i> 85% 考生首選推薦
+          </div>
+
+          <div>
+            <div class="flex justify-between items-start mb-4 mt-2">
+              <div>
+                <span class="text-xs font-bold text-brand-600 uppercase tracking-wide">穩健通關</span>
+                <h3 class="text-xl font-bold text-slate-900">90 天標準方案</h3>
+              </div>
+              <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">超高性價比</span>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-black text-brand-600">NT$ 399</span>
+              <span class="text-xs text-slate-400 line-through ml-1">原價 $600</span>
+              <p class="text-xs text-emerald-600 font-semibold mt-1">比 30 天只多 $100，使用時間多 3 倍！</p>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-600 mb-8 border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 單一科目 90 天全功能使用權</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 最新題庫與法規即時同步更新</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 智慧錯題消滅 ＋ 考點分析成績單</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 支援手機/平板/電腦跨裝置暢刷</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <button onclick="handleCheckout('standard_90d', '90 天標準方案', 399)" class="w-full py-3.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-black text-sm rounded-xl transition-all shadow-lg shadow-brand-600/30 hover:scale-[1.02]">
+              立即開通熱銷方案 ($399)
+            </button>
+            <p class="text-[11px] text-center text-slate-400">付款備註填寫 Email 即開通</p>
+          </div>
+        </div>
+
+        <!-- Plan 4: 180天安心包過 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <span class="text-xs font-bold text-purple-600 uppercase tracking-wide">跨梯次備考</span>
+                <h3 class="text-xl font-bold text-slate-900">180 天安心方案</h3>
+              </div>
+              <span class="text-xs font-bold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">每天不到$2.8</span>
+            </div>
+            
+            <div class="mb-6">
+              <span class="text-4xl font-black text-slate-900">NT$ 499</span>
+              <span class="text-xs text-slate-400 line-through ml-1">原價 $800</span>
+              <p class="text-xs text-slate-500 mt-1">跨半年兩次考試梯次最安心</p>
+            </div>
+
+            <ul class="space-y-3 text-xs text-slate-600 mb-8 border-t border-slate-100 pt-6">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 單一科目 180 天全功能使用權</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 半年內所有最新考古題自動納入</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 無限次全真模擬測驗</li>
+            </ul>
+          </div>
+
+          <div class="space-y-2">
+            <button onclick="handleCheckout('peace_180d', '180 天安心方案', 499)" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm rounded-xl transition-all shadow-sm">
+              線上開通 ($499)
+            </button>
+            <p class="text-[11px] text-center text-slate-400">付款備註填寫 Email 即開通</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       開通流程 3 步驟 (Mode C: How it works)
+       ========================================== -->
+  <section id="activation-flow" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">購買指南</h2>
+        <p class="text-3xl font-black text-slate-900">輕鬆 3 步驟，快速開通刷題權限</p>
+        <p class="text-slate-600 text-sm sm:text-base mt-3">採用最直覺的帳號開通機制，無須複雜設定</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        
+        <!-- Step 1 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 relative flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-2xl bg-brand-600 text-white flex items-center justify-center text-2xl font-black mb-6 shadow-md shadow-brand-500/20">
+            1
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">挑選備考方案</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            依您的考期需求選擇合適的天數方案（3天/30天/90天/180天），點擊按鈕進入線上安全付款。
+          </p>
+          <a href="#pricing" class="mt-4 text-xs font-bold text-brand-600 hover:underline">
+            查看方案定價 ➔
+          </a>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-slate-50 border-2 border-brand-500/80 rounded-3xl p-8 relative flex flex-col items-center text-center shadow-lg">
+          <div class="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-2xl font-black mb-6 shadow-md">
+            2
+          </div>
+          <span class="text-[11px] font-bold text-amber-600 uppercase tracking-wide">關鍵步驟</span>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">付款並備註常用信箱</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            結帳時於<strong>【備註欄 / 買家留言】</strong>填寫您要作為登入帳號的「常用 Email」與欲開通的「科目及級別」。
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 relative flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-600 text-white flex items-center justify-center text-2xl font-black mb-6 shadow-md shadow-emerald-500/20">
+            3
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">後台開通．收到信即開刷</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            管理員確認款項後，會直接在後台為您建立專屬帳號與開通天數，並發送信件通知，收到即可立即登入開始刷題！
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       常見問題 (FAQ)
+       ========================================== -->
+  <section id="faq" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <h2 class="text-xs font-bold tracking-widest text-brand-600 uppercase mb-2">解答疑慮</h2>
+        <p class="text-3xl font-black text-slate-900">常見問題與服務說明</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-bold text-slate-900 text-base flex items-center justify-between cursor-pointer">
+            <span>Q1. 付款後大約多久會開通？如果結帳時忘記填寫 Email 怎麼辦？</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            我們會在確認訂單後迅速為您人工審核並開通（通常於 30 分鐘至數小時內完成）。若結帳時不小心漏填 Email，請不用擔心，直接寄信至我們的客服信箱 (wang888.tw@gmail.com)，並出示您的訂單編號或付款截圖，我們將立刻為您手動補登！
+          </p>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-bold text-slate-900 text-base flex items-center justify-between cursor-pointer">
+            <span>Q2. 可以在手機與平板上刷題嗎？需要下載 App 嗎？</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            本系統採用現代化 Web 架構，完全不需要下載任何 App！只要打開手機、平板或電腦的瀏覽器（Chrome、Safari 等）登入即可隨時開始。同一帳號同一時間限單一裝置登入，隨時無縫切換。
+          </p>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-bold text-slate-900 text-base flex items-center justify-between cursor-pointer">
+            <span>Q3. 購買後如何指定開通的科目與級別？</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            請在結帳付款頁面的<strong>【備註欄 / 買家留言】</strong>依序填寫：<br>
+            1. 您要作為登入帳號的常用信箱 (Email)<br>
+            2. 欲開通科目（AI應用規劃師 / 淨零碳規劃管理師 / 資訊安全工程師）<br>
+            3. 報考級別（初級 / 中級）<br>
+            管理員確認款項後將直接在後台為您建立帳號並開通對應考科的天數權限！
+          </p>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6">
+          <h3 class="font-bold text-slate-900 text-base flex items-center justify-between cursor-pointer">
+            <span>Q4. 退費與數位商品消保法規定</span>
+          </h3>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            本商品為非以有形媒介提供之數位內容或一經提供即為完成之線上服務，經消費者事先同意始提供，依消費者保護法第 19 條規定，排除 7 天鑑賞期。若不確定是否適用，建議您先以 NT$ 49 購買「3 天體驗包」進行完整功能體驗。
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       底部行動呼籲 (Bottom CTA Banner)
+       ========================================== -->
+  <section class="py-16 bg-gradient-to-r from-brand-900 via-indigo-900 to-slate-900 text-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-black">準備好一次拿下 iPAS 專業證照了嗎？</h2>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto">
+        現在就加入高效刷題行列，擺脫低效率死記，讓系統幫您抓住每一分的考點！
+      </p>
+      <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black rounded-xl shadow-lg transition-all">
+          <i class="fa-solid fa-bolt mr-2"></i>挑選方案開始刷題
+        </a>
+        <a id="ctaLoginBtn" href="#" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 transition-all">
+          登入試題平台
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       頁尾 (Footer)
+       ========================================== -->
+  <footer class="bg-slate-950 text-slate-400 py-12 text-sm border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800 text-center md:text-left">
+        <div>
+          <div class="flex items-center justify-center md:justify-start gap-2 text-white font-bold text-lg mb-1">
+            <i class="fa-solid fa-graduation-cap text-brand-500"></i>
+            <span>AIWIS 慧利眾－試題雲</span>
+          </div>
+          <p class="text-xs text-slate-400">專為 iPAS 考生打造的智慧型雲端備考學習系統</p>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs">
+          <a id="footerShopee" href="#" target="_blank" class="hover:text-amber-400 transition-colors"><i class="fa-solid fa-store mr-1"></i>蝦皮賣場</a>
+          <a id="footerEmail" href="#" class="hover:text-white transition-colors"><i class="fa-regular fa-envelope mr-1"></i>聯絡我們</a>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4 text-center sm:text-left">
+        <p>© 2026 AIWIS 慧利眾 試題雲. All Rights Reserved.</p>
+        <p>iPAS 商標與能力指標歸經濟部產業人才能力鑑定官方所有，本站為提供學習測驗服務之第三方系統。</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =======================================================
+       模式 C 結帳重要提醒彈窗 (Checkout Reminder Modal)
+       ======================================================= -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm hidden p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 transform transition-all animate-in fade-in zoom-in duration-200">
+      
+      <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-4">
+        <i class="fa-solid fa-bell animate-bounce"></i>
+      </div>
+
+      <h3 class="text-xl font-black text-slate-900 text-center mb-2">付款重要提醒</h3>
+      
+      <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 my-4 text-left text-xs sm:text-sm text-slate-700 space-y-2">
+        <p class="font-bold text-amber-900 flex items-center gap-1.5">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          請務必備註帳號信箱與開通考科：
+        </p>
+        <p class="leading-relaxed">
+          前往綠界/藍新金流結帳時，請務必在結帳頁面的<strong>【備註欄 / 買家留言】</strong>填寫您要作為登入帳號的「常用信箱 (Email)」、欲開通的「科目」與「級別」。
+        </p>
+        <p class="text-slate-500 text-[11px]">
+          管理員核對款項後，會直接在後台為您建立帳號並開通天數，並寄信通知您！
+        </p>
+      </div>
+
+      <div class="text-center text-xs text-slate-500 mb-6">
+        您選擇的方案：<span id="modalPlanName" class="font-bold text-brand-600">--</span>
+        （<span id="modalPlanPrice" class="font-bold text-slate-800">--</span>）
+      </div>
+
+      <div class="flex flex-col gap-2.5">
+        <button id="modalConfirmBtn" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm rounded-xl shadow-lg shadow-brand-600/30 transition-all">
+          我知道了，前往付款 ➔
+        </button>
+        <button onclick="closeModal()" class="w-full py-2.5 text-slate-500 hover:text-slate-800 font-semibold text-xs transition-colors">
+          稍後再說（返回修改）
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       前端互動腳本 (JS)
+       ========================================== -->
+  <script>
+    // 1. 初始化全站連結
+    document.addEventListener("DOMContentLoaded", () => {
+      // 平台入口
+      const loginLinks = ["navLoginBtn", "mobileNavLoginBtn", "ctaLoginBtn"];
+      loginLinks.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = SITE_CONFIG.platformLoginUrl;
+      });
+
+      // 蝦皮賣場
+      const shopeeLinks = ["heroShopeeBtn", "footerShopee"];
+      shopeeLinks.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.href = SITE_CONFIG.shopeeShopUrl;
+      });
+
+      // 客服信箱
+      const footerEmail = document.getElementById("footerEmail");
+      if (footerEmail) footerEmail.href = `mailto:${SITE_CONFIG.contactEmail}`;
+
+      // 手機版選單切換
+      const mobileBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+        document.querySelectorAll(".mobile-nav-link").forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      }
+    });
+
+    // 2. 模式 C 結帳點擊處理（跳出提醒 Modal 避免漏填 Email）
+    let currentTargetUrl = "";
+
+    function handleCheckout(planKey, planName, price) {
+      const url = SITE_CONFIG.paymentLinks[planKey] || "#";
+      currentTargetUrl = url;
+
+      document.getElementById("modalPlanName").innerText = planName;
+      document.getElementById("modalPlanPrice").innerText = `NT$ ${price}`;
+      
+      const modal = document.getElementById("checkoutModal");
+      modal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("checkoutModal");
+      modal.classList.add("hidden");
+    }
+
+    document.getElementById("modalConfirmBtn").addEventListener("click", () => {
+      if (currentTargetUrl && currentTargetUrl !== "#") {
+        window.open(currentTargetUrl, "_blank");
+      } else {
+        alert("提示：尚未設定具體金流付款網址。請在網頁程式碼頂端的 SITE_CONFIG.paymentLinks 中填入您的綠界快客力或藍新收款連結！");
+      }
+      closeModal();
+    });
+
+    // 點擊 Modal 外圍關閉
+    document.getElementById("checkoutModal").addEventListener("click", (e) => {
+      if (e.target.id === "checkoutModal") {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
